@@ -1,0 +1,68 @@
+* {
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Setup de base du body */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #222;
+}
+
+/* Apparence de base du bouton et du texte */
+.glow-btn {
+    position:relative;
+    padding: 20px 60px;
+    border-radius: 50px;
+    border:none;
+    color: #fff; 
+    font-size: 1.5em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: rgba(45,45,45,1);
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+/* ajouts du changement de couleur + glow sur le texte */
+.glow-btn:hover {
+    color : var(--clr);
+    text-shadow: 0 0 15px var(--clr), 0 0 40px var(--clr);
+}
+
+/* Texte mis au premier plan */
+.glow-btn span {
+    position:relative;
+    z-index: 1;
+}
+
+/* setup de la position du glow border en fonction de la position de la sourie */
+.glow-btn::before {
+    content:'';
+    position:absolute;
+    top:var(--y); /* voir js */
+    left:var(--x); /* voir js */
+    transform: translate(-50%,-50%); /* glow centrer autour de la sourie */
+    width: 200px; /* taille du glow */
+    height: 200px; /* taille du glow */
+    background: radial-gradient(var(--clr), transparent, transparent); /* glow circulaire (couleur modifiable) */
+    transition: 0.5s, top 0s, left 0s;
+    opacity: 0; /* opacité de départ */
+}
+
+.glow-btn:hover::before{
+    opacity: 1; /* apparation du glow lors d'un hover */
+}
+
+/* soustraction du glow afin qu'il n'apparaissent que sur les bords du bouton */
+.glow-btn::after {
+    content:'';
+    position: absolute;
+    inset:2px;
+    background: rgba(45,45,45,0.8);
+    border-radius: 48px;
+}
