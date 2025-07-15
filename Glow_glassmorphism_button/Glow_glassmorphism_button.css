@@ -1,0 +1,93 @@
+* {
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Setup de base du body */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #222;
+}
+
+/* Setup de base du glow */ 
+.glow-glass-btn {
+    position: relative;
+    width: 155px;
+    height: 50px;
+    margin: 20px;
+}
+
+/* Apparence général du bouton */
+.glow-glass-btn button{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background: rgba(255,255,255,0.05);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    border-top: 1px solid rgba(255,255,255,0.1); /* legere lumiere sur la border haute */
+    border-bottom: 1px solid rgba(255,255,255,0.1); /* legere lumiere sur la border basse */
+    color: #000;
+    z-index: 10; /* bouton mis au premier plan */
+    border-radius: 30px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    overflow: hidden;
+    transition: 0.5s;
+    backdrop-filter: blur(10px); /* floute les elements en arriere plan du bouton */
+}
+
+/* Animation espacement des lettres */
+.glow-glass-btn button:hover {
+    letter-spacing: 0.4em;
+}
+
+/* Setup reflexion lumiere sur bouton */ 
+.glow-glass-btn button::before { 
+    content:'';
+    position: absolute;
+    top:0;
+    left:80%; /* jouer avec la valeur pour positionner la reflection depuis la gauche du bouton */
+    width:60%;
+    height: 100%;
+    transform: skewX(45deg) translateX(-160%); /* modifier pour changer l'angle de la reflection */
+    background: linear-gradient(to left, rgba(255, 255, 255, 0.473), transparent); /* couleur et transparence de la reflection */
+    transition: 0.5s;
+}
+
+/* Animation reflection */
+.glow-glass-btn button:hover::before {
+    transform: skewX(45deg) translateX(70%);
+}
+
+/* Apparence de base du glow */
+.glow-glass-btn::before {
+    content:'';
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%) rotate(45deg); /*positionnement du curseur centrer au niveau du bouton */
+    width: 60px;
+    height: 60px;
+    box-shadow: 0 0 5px var(--clr), 0 0 15px var(--clr), 0 0 30px var(--clr), 0 0 60px var(--clr); /* effet glow */
+    background: var(--clr); /* couleur a modifier directement sur le html */
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+/* Animation du glow d'arriere plan */
+.glow-glass-btn:hover::before {
+    width:100%;
+    height: 100%;
+    transform: translate(-50%, -50%) rotate(0deg); /* modification de la forme pour reprendre celle du bouton */
+    border-radius: 30px;
+}
