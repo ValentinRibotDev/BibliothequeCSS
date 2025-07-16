@@ -1,0 +1,50 @@
+* {
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Setup de base du body */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #222;
+}
+
+/* Setup apparence de base du bouton */
+.smoke-btn {
+    position: relative;
+    padding: 20px 40px; /* valeur modifiable */
+    margin: 20px;
+    background: #3498db; /* couleur du fond */
+    color: #fff; /* couleur du texte */
+    border:none;
+    border-radius: 5px; /* bord arrondi (modifiable) */
+    text-transform: uppercase; /* texte en majuscule */
+    cursor: pointer;
+    letter-spacing: 0.2em; /* espacement des lettres */
+    font-size: 1.5em; /* taille du texte */
+    overflow: hidden; /* caché ce qui sort du bouton */
+}
+
+/* Setup apparence de base de la fumée */
+.smoke-particle {
+    position:absolute;
+    background: #fff;
+    width: 10px; /* taille des particules (modifiable) */
+    height: 10px;   /* taille des particules (modifiable) */
+    border-radius: 50%; /* particule circulaire (retirer pour avoir carré) */
+    pointer-events: none;
+    opacity: 1; 
+    animation : smokeBtn 1s ease-out forwards; /* parametre de l'animation */
+}
+
+@keyframes smokeBtn {
+    to {
+        opacity:0;
+        transform: translate(var(--tx), var(--ty)) scale(5); /* deformation des particules pendant l'animation */
+        filter: blur(5px);
+    }
+}
