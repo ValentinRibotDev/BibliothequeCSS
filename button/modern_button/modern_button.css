@@ -1,0 +1,86 @@
+* {
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Setup de base du body */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #222;
+}
+
+/*Apparence de base du bouton */
+.modern-btn {
+    position:relative;
+    padding:14px 36px;
+    margin: 20px;
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #fff;
+    background: #1c2526;
+    border:none;
+    border-radius: 12px;
+    cursor:pointer;
+    overflow: hidden;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+/*Apparence de base du contour du bouton */
+.modern-btn::before {
+    content:'';
+    position:absolute;
+    inset: -2px;
+    background: linear-gradient(45deg, var(--clr1), var(--clr2));
+    border-radius: 14px;
+    z-index: -1;
+    transition: all 0.3s ease;
+}
+
+.modern-btn::after {
+    content:'';
+    position:absolute;
+    inset: 2px;
+    background: #1c2526;
+    border-radius: 10px;
+    z-index: -1;
+}
+
+/* Animation du bouton lors du hover */
+.modern-btn:hover {
+    transform: translateY(-2px);
+    color: var(--clr2);
+}
+
+/* Animation du contour lors du hover */
+.modern-btn:hover::before {
+    background: linear-gradient(45deg, var(--clr2), var(--clr1));
+    filter : blur(1px);       
+}
+
+/* Animation du bouton lors du clic */
+.modern-btn:active {
+    transform: scale(0.95);
+}
+
+/*Apparence de base de l'effet brillance */
+.modern-btn-shine {
+    position:absolute;
+    top:-50%;
+    left:-50%;
+    width:200%;
+    height: 200%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+    z-index:0;
+}
+
+.modern-btn:hover .modern-btn-shine {
+    transform: translateX(100%);
+}
