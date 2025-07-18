@@ -1,0 +1,75 @@
+body {
+    margin:0;
+    font-family: Arial;
+    font-size: 1.5rem;
+}
+/*
+.div1, .div2 {
+    height: 100vh;
+}
+
+.div1 {
+    background-color: pink;
+}
+
+.div2 {
+    background-color: salmon;
+}
+
+.square {
+    width: 150px;
+    height: 150px;
+    background-color: fuchsia;
+}
+
+.square2 {
+    width: 150px;
+    height: 150px;
+    background-color: green;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+}
+*/
+nav {
+    position: sticky;
+    top:0;
+    transition: all 600ms ease-in-out;
+    background-color: tan;
+    color: white;
+}
+
+ul{
+    margin:0;
+    padding:40px;
+    display:flex;
+    justify-content: flex-end;
+    list-style-type: none;
+}
+
+li{
+    margin-right: 60px;
+}
+
+.panel {
+    height: 100vh;
+    background-color: tan;
+}
+
+.nav-active {
+    background-color: white;
+    color:black;
+}
+
+p{
+    padding-top: 50px;
+    margin: 0 auto;
+    max-width:1200px;
+}
+
+.box-red {
+    background-color: red;
+}
