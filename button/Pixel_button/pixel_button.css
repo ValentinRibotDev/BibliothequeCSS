@@ -1,0 +1,65 @@
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+/* setup de base du body */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap:40px;
+  min-height: 100vh;
+  background: #1a1a1a;
+}
+
+/* setup de l'apparence du bouton et du texte interne a celui ci*/
+.pixel-btn {
+  position:relative;
+  width:180px;
+  height:60px;
+  border:none;
+  outline:none;
+  color: #fff;
+  background: #333;
+  font-size: 1.25em;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+  text-transform: uppercase;
+  cursor:pointer;
+}
+
+/* setup le texte afin qu'il soit toujours au premier plan*/
+.pixel-btn span {
+  position:relative;
+  z-index: 2;
+}
+
+/*setup du conteneur des pixels afin qu'il soit parfaitement aligné sur le bouton tous en étant derriere le texte*/
+.pixel-container {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/*apparence des pixel*/
+.pixel {
+  position:absolute;
+  width: 5px; /*largeur des pixels (doit etre égale à la valeur choisi dans le js*/
+  height: 5px; /*hauteur des pixels (doit etre égale à la valeur choisi dans le js*/
+  pointer-events: none;
+  background: var(--clr); /*couleur unique si identique pour tous le bouton, sinon modifier le --clr dans la variable*/
+  border: 0.5px solid rgba(0,0,0,0.25); /*grille de séparation de chaque pixel*/
+  opacity:0;/*opacité de départ = 0 afin que les pixels ne soit pas visible par défaut*/
+  transition: opacity 0.5s ease;/* tant de transition */
+}
+
+.pixel-btn:hover .pixel {
+  opacity:1; /* apparition des pixels suite au hover */
+}

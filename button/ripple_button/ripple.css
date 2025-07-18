@@ -1,0 +1,51 @@
+* {
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+/* setup de base du body */
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #222;
+  gap:20px;
+  flex-wrap: wrap;
+}
+
+/* setup de l'apparence du bouton et du texte interne a celui ci*/
+.ripple-btn {
+  position: relative;
+  padding: 15px 40px;
+  border: 1px solid #ffffff10;
+  font-size: 1.25em;
+  border-radius: 40px;
+  color: #fff;
+  background: #292929;
+  overflow: hidden;
+}
+
+/* Apparence du span (effet ripple) */
+.ripple-btn span {
+  position: absolute;
+  background: var(--clr); /* couleur du span */
+  pointer-events: none;
+  border-radius: 50%;
+  transform: translate(-50%,-50%); /* centrage du span autour de la sourie */
+  animation: animate 1s linear infinite; /* durée et type d'animation */
+}
+
+@keyframes animate { /* paramétrage des clés de l'animation */
+  0%{ /* apparence du ripple a sa création */
+    width:0px;
+    height:0px;
+    opacity: 0.5; /* modifier l'opacité de départ */
+  }
+  100%{ /* apparence du ripple a sa disparitions */
+    width:350px;
+    height:350px;
+    opacity: 0;
+  }
+}
